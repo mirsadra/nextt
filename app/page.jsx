@@ -2,10 +2,10 @@
 // in Next.js, we no longer need to specify the react import
 // import React from 'react'
 
-const SadraHome = () => {
+const Home = () => {
   return (
-    <div>page</div>
+    <div>Home</div>
   )
 }
 
-export default SadraHome
+export default Home
