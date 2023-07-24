@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 
+
 const Nav = () => {
   const isUserLoggedIn = true;
 
@@ -40,13 +41,7 @@ const Nav = () => {
             </button>
 
             <Link href="/profile">
-              <Image 
-                src="/assets/images/profile.svg"
-                width={37}
-                height={37}
-                className="rounded-full"
-                alt="profile"
-              />
+              <Image src="/assets/images/profile.svg" width={37} height={37} alt="profile" className="object-contain" />
             </Link>
           </div>
          ): (
@@ -62,6 +57,32 @@ const Nav = () => {
          )}
       </div>
 
+      {/* Mobile Navigation */ }
+      <div className="sm:hidden flex relative">
+        {isUserLoggedIn ? ( 
+          <div className="flex"> 
+            <Image 
+              src="/assets/images/profile.svg" 
+              width={37} 
+              height={37} 
+              alt="profile" 
+              className="rounded-full" 
+              onClick={() => signIn(provider.id)} 
+            /> 
+          </div> 
+        ) : ( 
+          <>
+            { /* if the user is not logged in, show button of sign in! In this case Google Auth is used!*/ } 
+            {providers && 
+              Object.values(providers).map((provider) => ( 
+              <button type="button" key="provider.name" onClick={() => signIn(provider.id)} className="black_btn"> 
+                Sign In
+              </button> ))
+            }
+          </>
+        )}
+      </div>
+        
     </nav>
   )
 }

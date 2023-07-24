@@ -1,4 +1,4 @@
-// File: /Users/m1pro/GitSad/nextt/app/page.jsx
+// File: /Users/m1pro/GitSad/nextt-1/app/page.jsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
