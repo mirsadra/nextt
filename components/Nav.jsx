@@ -6,18 +6,18 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const Nav = () => {
-  const isUserLoggedIn = true;
+  const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   useEffect(() => { 
-    const setProviders = async () => {
+    const setNavProviders = async () => {
       const response = await getProviders();
       // once we get response, we set the providers
       setProviders(response);
     }
-    setProviders();
+    setNavProviders();
   }, []) 
 
   return (
@@ -27,9 +27,10 @@ const Nav = () => {
         <p className="logo_text">ChatETH.io</p>
       </Link> 
 
+
       { /* Dekstop Navigation */ }
       <div className="sm:flex hidden">
-         {isUserLoggedIn ? (
+         {session?.user ? (   // when there is no user, it is false! so we cannot Chat with ChatGPT or Sign Out
           // if the user is logged in, show this
           <div className="flex gap-3 md:gap-5"> 
             <Link href="/create-prompt" className="black_btn">
@@ -58,10 +59,10 @@ const Nav = () => {
 
       {/* Mobile Navigation */ }
       <div className="sm:hidden flex relative">
-        {isUserLoggedIn ? ( 
+        {session?.user ? (                            // whether the user exists or not
           <div className="flex"> 
             <Image 
-              src="/assets/images/profile.svg" 
+              src="/assets/images/profile.svg"  
               width={37} 
               height={37} 
               alt="profile" 
