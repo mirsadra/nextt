@@ -23,6 +23,6 @@ const userSchema = new Schema({
 // export default User;
 
 // In Next.js; however, we say that route only will be create and running when it is get called.
-const User = models.User || model("User", UserSchema);
+const User = models.User || model("User", userSchema);
 
 export default User;
