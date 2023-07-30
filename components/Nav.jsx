@@ -23,7 +23,12 @@ const Nav = () => {
   return (
     <nav className="flex-between w-full mb-16 pt-3"> 
       <Link href="/" className="flex gap-2 flex-center"> 
-        <Image src="/assets/images/logo.svg" width={100} height={100} alt="logo" className="object-contain" />
+        <Image src="/assets/images/logo.svg" 
+          width={100} 
+          height={100} 
+          alt="logo" 
+          className="object-contain" 
+          />
         <p className="logo_text">ChatETH.io</p>
       </Link> 
 
@@ -41,10 +46,15 @@ const Nav = () => {
             </button>
 
             <Link href="/profile">
-              <Image src="/assets/images/profile.svg" width={37} height={37} alt="profile" className="object-contain" />
+              <Image src= {session?.user.image} 
+                width={47} 
+                height={47} 
+                alt="profile" 
+                className="rounded-full"
+                />
             </Link>
           </div>
-         ): (
+         ) : (
           <>
             { /* if the user is not logged in, show button of sign in! In this case Google Auth is used!*/ } 
             {providers && 
@@ -61,12 +71,11 @@ const Nav = () => {
       <div className="sm:hidden flex relative">
         {session?.user ? (                            // whether the user exists or not
           <div className="flex"> 
-            <Image 
-              src="/assets/images/profile.svg"  
-              width={37} 
-              height={37} 
+            <Image src= {session?.user.image} 
+              width={47} 
+              height={47} 
               alt="profile" 
-              className="rounded-full" 
+              className="rounded-full"
               onClick={() => setToggleDropdown((prev) => !prev)} 
             /> 
             {/* if toggle drop down is true, show the dropdown menu */}
