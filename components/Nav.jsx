@@ -39,7 +39,7 @@ const Nav = () => {
           // if the user is logged in, show this
           <div className="flex gap-3 md:gap-5"> 
             <Link href="/create-prompt" className="black_btn">
-              Chat with ChatGPT
+              Prompt Generator
             </Link>
             <button type="button" onClick={signOut} className="outline_btn">
               Sign Out

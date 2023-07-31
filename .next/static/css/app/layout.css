@@ -516,6 +516,9 @@ video {
 .w-full{
   width: 100%;
 }
+.max-w-full{
+  max-width: 100%;
+}
 .grid-cols-6{
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
@@ -549,6 +552,9 @@ video {
 }
 .pt-3{
   padding-top: 0.75rem;
+}
+.text-left{
+  text-align: left;
 }
 .text-center{
   text-align: center;
