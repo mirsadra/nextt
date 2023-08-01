@@ -1,19 +1,22 @@
 'use client';
 
-import { useState } from 'react';
-import { useSession } from 'next-auth/react';  // which users are logged in
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';  // so we have to use `use client` at the top of the file.
+import { useSession } from 'next-auth/react';  // allow us to know which users are logged in
+import { useRouter } from 'next/navigation';  // allow us to redirect the user to the homepage after creating a new prompt.
 
 import Form from 'components/Form';
 
+// This is our Form component. We're going to use it to create a new prompt.
 const CreatePrompt = () => {
+  const router = useRouter();
+  const { data : session } = useSession(); 
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
     prompt: '',
     tag: '',
   });
   
-  const CreatePrompt = async (e) => {  // we're going to create a new prompt.
+  const createPrompt = async (e) => {  // we're going to create a new prompt.
     e.preventDefault();  // to make our prompt function (written in Form.jsx) work, we need to prevent the default behavior of the browser while submitting the form to reload.
     setSubmitting(true);  // we're submitting the form, so we set the submitting to true. We use it as kind of loader.
     // Focus on creating our first prompt. We need to send a request to our API to create a new prompt. 
@@ -29,7 +32,7 @@ const CreatePrompt = () => {
       })
 
       if(response.ok) {  // if we have a response, we check if the response is ok.
-        Router.push('/');  // if we have a response, we redirect the user to the homepage.
+        router.push('/');  // if we have a response, we redirect the user to the homepage.
       }
     } catch (error) {  
       console.log(error);  // if we have an error, we log it to the console.
@@ -44,7 +47,7 @@ const CreatePrompt = () => {
         post={post}
         setPost={setPost}
         submitting={submitting}
-        handleSubmit={CreatePrompt}
+        handleSubmit={createPrompt}
     />
   )
 }
