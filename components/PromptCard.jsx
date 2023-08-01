@@ -32,8 +32,8 @@ const promptCard = ({ post, handleTagClick, handleEdit, handleDelete}) => {
         {/* it depends on whether the post has been copied already? so we need state */}
         <Image 
           src={copied === post.prompt
-          ? '/assets/icon/tick.svg'
-          : '/assets/icon/copy.svg'
+          ? 'public/assets/icons/tick.svg'
+          : 'public/assets/icons/copy.svg'
         }
         width={12}
         height={12}
