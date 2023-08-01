@@ -33,7 +33,7 @@ const promptCard = ({ post, handleTagClick, handleEdit, handleDelete}) => {
         <Image 
           src={copied === post.prompt
           ? 'public/assets/icons/tick.svg'
-          : 'public/assets/icons/copy.svg'
+          : 'public/assets/icons/content-copy.svg'
         }
         width={12}
         height={12}
