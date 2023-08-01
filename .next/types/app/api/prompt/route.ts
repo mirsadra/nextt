@@ -1,4 +1,4 @@
-// File: /Users/m1pro/nextt/app/api/prompt/route.js
+// File: /Users/m1pro/GitSad/nextt-2/app/api/prompt/route.js
 import * as entry from '../../../../../app/api/prompt/route.js'
 import type { NextRequest } from 'next/server.js'
 
